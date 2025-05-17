@@ -20,19 +20,12 @@ const Features = () => {
 
   useEffect(() => {
     const updateLines = () => {
-      if (window.innerWidth < 768) {
+      if (window.innerWidth < 768 || !svgRef.current) {
         setLines([]);
         return;
       }
-      const newLines: {
-        type: "curved" | "vertical";
-        x1: number;
-        y1: number;
-        x2: number;
-        y2: number;
-      }[] = [];
 
-      if (!svgRef.current) return;
+      const newLines: typeof lines = [];
       const svgRect = svgRef.current.getBoundingClientRect();
       const svgTop = svgRect.top + window.scrollY;
       const svgLeft = svgRect.left;
@@ -86,14 +79,30 @@ const Features = () => {
       setLines(newLines);
     };
 
-    updateLines();
-
     window.addEventListener("resize", updateLines);
     window.addEventListener("scroll", updateLines);
+
+    const observers: ResizeObserver[] = [];
+
+    const observeElements = (refs: (HTMLDivElement | null)[]) => {
+      refs.forEach((el) => {
+        if (el) {
+          const observer = new ResizeObserver(() => {
+            updateLines();
+          });
+          observer.observe(el);
+          observers.push(observer);
+        }
+      });
+    };
+
+    observeElements(leftRefs.current);
+    observeElements(rightRefs.current);
 
     return () => {
       window.removeEventListener("resize", updateLines);
       window.removeEventListener("scroll", updateLines);
+      observers.forEach((observer) => observer.disconnect());
     };
   }, []);
 
@@ -101,7 +110,7 @@ const Features = () => {
     <section id="features" className="relative z-10 py-16 md:pt-20 lg:pt-24">
       <SectionTitle
         title="Amazing technologies, helpful for your business"
-        width="80%"
+        width="70%"
       />
       <div className="container mx-auto px-4">
         <svg
@@ -116,68 +125,43 @@ const Features = () => {
             </linearGradient>
           </defs>
 
-          {lines.map((line, idx) => {
-            if (line.type === "curved") {
-              // Calculationss for S-curve
-              const midX = (line.x1 + line.x2) / 2;
-              const controlPoint1X = line.x1 + (midX - line.x1) * 4;
-              const controlPoint1Y = line.y1 + 10;
-              const controlPoint2X = line.x2 - (line.x2 - midX) * 4;
-              const controlPoint2Y = line.y2 - 10;
-
-              // SVG path for S-curve
-              const path = `M ${line.x1} ${line.y1} C ${controlPoint1X} ${controlPoint1Y}, ${controlPoint2X} ${controlPoint2Y}, ${line.x2} ${line.y2}`;
-
-              return (
-                <path
-                  key={`curve-${idx}`}
-                  d={path}
-                  fill="none"
-                  stroke="url(#lineGradient)"
-                  strokeWidth="1"
-                  strokeLinecap="round"
-                  opacity="0.7"
-                />
-              );
-            } else {
-              // Dashed vertical
-              return (
-                <line
-                  key={`vert-${idx}`}
-                  x1={line.x1}
-                  y1={line.y1}
-                  x2={line.x2}
-                  y2={line.y2}
-                  stroke="#000000"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  opacity="0.8"
-                  strokeDasharray="6,4"
-                />
-              );
-            }
-          })}
+          {lines
+            .filter((line) => line.type === "vertical")
+            .map((line, idx) => (
+              <line
+                key={`vert-${idx}`}
+                x1={line.x1}
+                y1={line.y1}
+                x2={line.x2}
+                y2={line.y2}
+                stroke="#000000"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                opacity="0.8"
+                strokeDasharray="6,4"
+              />
+            ))}
         </svg>
 
         <div className="relative z-30 mx-auto mt-24 grid max-w-6xl grid-cols-1 gap-16 md:grid-cols-2">
-          <div className="flex flex-col gap-12 md:translate-y-12">
-            {leftCards.map((card, idx) => (
+          <div className="flex flex-col gap-12 md:translate-y-6">
+            {leftCards.map((card, index) => (
               <SingleFeature
-                key={`left-${idx}`}
+                key={`left-${index}`}
                 card={card}
-                index={idx}
-                refSetter={(el) => (leftRefs.current[idx] = el)}
+                index={index}
+                refSetter={(el) => (leftRefs.current[index] = el)}
               />
             ))}
           </div>
 
           <div className="flex flex-col gap-12 md:-translate-y-12">
-            {rightCards.map((card, idx) => (
+            {rightCards.map((card, index) => (
               <SingleFeature
-                key={`right-${idx}`}
+                key={`right-${index}`}
                 card={card}
-                index={idx}
-                refSetter={(el) => (rightRefs.current[idx] = el)}
+                index={index}
+                refSetter={(el) => (rightRefs.current[index] = el)}
               />
             ))}
           </div>

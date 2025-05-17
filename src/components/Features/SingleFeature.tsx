@@ -2,6 +2,7 @@
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 type StackItem = {
   title: string;
@@ -23,47 +24,76 @@ const SingleFeature = ({ card, index, refSetter }: FeatureProps) => {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <div
+    <motion.div
       key={index}
       ref={refSetter}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className="rounded-md bg-white p-6 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+      onHoverStart={() => setHovered(true)}
+      onHoverEnd={() => setHovered(false)}
+      whileHover={{
+        y: -6,
+        scale: 1.015,
+        transition: { type: "spring", stiffness: 150, damping: 12 },
+      }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="relative rounded-md p-6 shadow-lg"
     >
-      <div className="flex justify-between">
-        <div className="flex gap-2">
+      <div className="flex items-start justify-between">
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.3 }}
+          className="flex items-center gap-2"
+        >
           <Image
             src={card.icon}
             alt={`${card.icon} icon`}
-            width={10}
-            height={10}
+            width={24}
+            height={24}
             className="h-6 w-6"
           />
-          <h3 className="mb-2 text-lg font-semibold">{card.title}</h3>
-        </div>
-        <ExternalLink className="h-5 w-5" />
+          <h3 className="text-lg font-semibold">{card.title}</h3>
+        </motion.div>
+        <ExternalLink className="h-5 w-5 text-black" />
       </div>
-      <p className="text-sm text-gray-700">{card.text}</p>
 
-      {hovered && (
-        <div className="-translate-y-4 p-4 absolute mt-4 w-full rounded-md border-t bg-white shadow-lg">
-          <div>
-            {card.stack.map((stack, i) => (
-              <div key={i} className="flex gap-4 rounded-md px-2 py-1 text-xs">
-                <Image
-                  src={stack.icon}
-                  alt="Stack Logo"
-                  width={10}
-                  height={10}
-                  className="h-6 w-6"
-                />
-                <h3 className="mb-2 text-sm">{stack.title}</h3>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
+      <p className="mt-2 text-sm text-black">{card.text}</p>
+
+      <AnimatePresence>
+        {hovered && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            className="mt-4 overflow-hidden"
+          >
+            <div className="space-y-2 rounded-md border-t pt-4">
+              {card.stack.map((stack, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  className="flex items-center gap-3 rounded-md px-2 py-1 text-xs"
+                >
+                  <Image
+                    src={stack.icon}
+                    alt="Stack Logo"
+                    width={24}
+                    height={24}
+                    className="h-6 w-6"
+                  />
+                  <h3 className="text-sm">{stack.title}</h3>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 };
 
