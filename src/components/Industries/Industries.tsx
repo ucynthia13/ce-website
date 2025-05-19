@@ -75,7 +75,7 @@ const Industries = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2 }}
-                className="mt-8 rounded-full border border-black px-4 py-2 text-sm font-medium transition hover:bg-black hover:text-white hover:scale-[1.05] duration-200"
+                className="mt-8 rounded-full border border-black px-4 py-2 text-sm font-medium transition duration-200 hover:scale-[1.05] hover:bg-black hover:text-white"
               >
                 Get A Free Quote
               </motion.button>
@@ -91,7 +91,7 @@ const Industries = () => {
                 alt={`${industry} Image`}
                 width={400}
                 height={500}
-                className="rounded-lg object-cover shadow-lg h-70 hover:scale-[1.03] transition duration-300"
+                className="h-70 rounded-lg object-cover shadow-xl transition duration-300 hover:scale-[1.03]"
               />
             </motion.div>
           </motion.div>
@@ -102,7 +102,7 @@ const Industries = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false }}
-        className="mt-20 bg-gradient-to-br from-black via-black to-neutral-600 px-8 py-12 text-white"
+        className="mt-20 bg-[url('/images/hero/background.svg')] bg-cover bg-center px-8 py-16 text-white"
       >
         <div className="container mx-auto grid max-w-6xl gap-10 md:grid-cols-2">
           <motion.div
@@ -121,7 +121,7 @@ const Industries = () => {
               experience, we have served clients in every type of industry and
               have rich knowledge in the field.
             </p>
-            <div className="grid grid-cols-2 gap-6 font-bold">
+            <div className="grid grid-cols-2 gap-6">
               {[
                 ["40+", "Websites Designed"],
                 ["100+", "Apps Approved"],
@@ -133,16 +133,15 @@ const Industries = () => {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
-                  className="rounded-lg bg-white p-4 text-start text-black shadow transition hover:scale-[1.05] duration-200"
+                  className="rounded-lg bg-white p-6 text-start font-semibold text-black transition duration-200 hover:scale-[1.05]"
                 >
-                  <p className="text-xl font-extrabold md:text-2xl">{value}</p>
+                  <p className="text-xl font-bold md:text-2xl">{value}</p>
                   <p className="mt-1 text-sm">{label}</p>
                 </motion.div>
               ))}
             </div>
           </motion.div>
 
-          {/* Flip-in animated stats */}
           <div className="grid grid-cols-2 gap-6">
             {[
               ["5+", "Years of Experience"],
@@ -159,9 +158,9 @@ const Industries = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="rounded-lg bg-white p-4 text-start font-bold text-black shadow transition hover:scale-105"
+                className="rounded-lg bg-white p-4 text-start font-semibold text-black transition duration-200 hover:scale-[1.05]"
               >
-                <p className="text-xl font-extrabold md:text-2xl">{value}</p>
+                <p className="text-xl font-bold md:text-2xl">{value}</p>
                 <p className="mt-1 text-sm">{label}</p>
               </motion.div>
             ))}
