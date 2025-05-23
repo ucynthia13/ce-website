@@ -3,9 +3,8 @@ import { FC, useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import SectionTitle from "../Common/SectionTitle";
 import { services } from "./serviceData";
-import Image from "next/image";
 
-const ScrollableServices: FC = () => {
+const Services: FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -53,39 +52,44 @@ const ScrollableServices: FC = () => {
             whiteSpace: "nowrap",
           }}
         >
-          {[...services].map((service, index) => (
-            <div
-              key={index}
-              className="flex min-w-[280px] shrink-0 snap-start flex-col justify-between rounded-md bg-gradient-to-b  from-neutral-100 via-white to-neutral-100 shadow-sm px-6 py-6 text-white shadow-m sm:min-w-[320px] lg:min-w-[320px]"
-            >
-              <div>
-                <h3 className="mt-4 mb-8 font-semibold text-black">{service.title}</h3>
-                <ul className="space-y-6 text-sm text-black/90">
-                  {service.items.map((item, i) => (
-                    <li key={i} className="flex items-center gap-4">
-                      <Image
-                        src={item.icon}
-                        alt="logo"
-                        width={10}
-                        height={10}
-                        className="h-5 w-5"
-                      />
-                      <span>{item.desc}</span>
-                    </li>
-                  ))}
-                </ul>
+          {[...services].map((service, index) => {
+            const Icon = service.icon;
+            return (
+              <div
+                key={index}
+                className="shadow-m flex min-w-[280px] shrink-0 snap-start flex-col justify-between rounded-md bg-gradient-to-b from-neutral-100 via-white to-neutral-100 px-6 py-6 text-white shadow-sm sm:min-w-[320px] lg:min-w-[320px]"
+              >
+                <div>
+                  <div className="flex justify-center items-center gap-2 mt-6 mb-10">
+                    <Icon className="h-5 w-5 text-black" />
+                    <h3 className="font-semibold text-black">
+                      {service.title}
+                    </h3>
+                  </div>
+                  <ul className="space-y-6 text-sm text-black/90">
+                    {service.items.map((item, i) => {
+                      const Icon = item.icon;
+                      return (
+                        <li key={i} className="flex items-center gap-4">
+                          <Icon className="h-5 w-5" />
+                          <span>{item.desc}</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+                <div className="mt-24">
+                  <button className="flex cursor-pointer items-center gap-2 rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition hover:opacity-90">
+                    Explore More <ArrowRight size={14} />
+                  </button>
+                </div>
               </div>
-              <div className="mt-24">
-                <button className="flex cursor-pointer items-center gap-2 rounded-full bg-neutral-200 px-6 py-3 text-sm font-medium text-black transition hover:opacity-90">
-                  Explore More <ArrowRight size={14} />
-                </button>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
   );
 };
 
-export default ScrollableServices;
+export default Services;
