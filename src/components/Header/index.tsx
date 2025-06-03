@@ -1,12 +1,12 @@
 "use client";
 
+import { Button } from "../ui/moving-border";
 import {
   Navbar,
   NavBody,
   NavItems,
   MobileNav,
   NavbarLogo,
-  NavbarButton,
   MobileNavHeader,
   MobileNavToggle,
   MobileNavMenu,
@@ -19,10 +19,10 @@ const Header = () => {
     {
       name: "Services",
       link: "#services",
-      // children: [
-      //   { name: "Web Development", link: "#features" },
-      //   { name: "Mobile Apps", link: "#mobile" },
-      // ],
+      children: [
+        { name: "Web Development", link: "#features" },
+        { name: "Mobile Apps", link: "#mobile" },
+      ],
     },
     { name: "Industries", link: "#industries" },
     { name: "Portfolios", link: "#portfolios" },
@@ -31,19 +31,18 @@ const Header = () => {
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+  
   return (
     <Navbar>
       <NavBody>
         <NavbarLogo />
         <NavItems items={navItems} />
         <div className="flex items-center gap-4">
-          <NavbarButton
-            variant="primary"
-            className="rounded-full bg-black text-[13px] text-white shadow-none"
+          <Button
+            className="border-neutral-300 bg-white px-4 text-[14px] font-semibold text-black dark:border-slate-800 dark:bg-black dark:text-white"
           >
-            Get A Free Quote
-          </NavbarButton>
+            Contact Us
+          </Button>
         </div>
       </NavBody>
 
@@ -71,13 +70,12 @@ const Header = () => {
             </a>
           ))}
           <div className="flex w-full flex-col gap-4">
-            <NavbarButton
-              onClick={() => setIsMobileMenuOpen(false)}
-              variant="primary"
-              className="w-full"
+            <Button
+              borderRadius="1.75rem"
+              className="border-neutral-300 bg-white px-4 text-[12px] font-bold text-black dark:border-slate-800 dark:bg-black dark:text-white"
             >
-              Get A Free Quote
-            </NavbarButton>
+              Contact Us
+            </Button>
           </div>
         </MobileNavMenu>
       </MobileNav>
