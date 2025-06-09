@@ -8,6 +8,7 @@ import Banner from "@/components/Common/Banner";
 import Services from "./components/Services/Services";
 import WhyUs from "@/components/Common/WhyUs/WhyUs";
 import { cloudData } from "@/components/Common/WhyUs/whyUsData";
+import TechStack from "./components/TechStack/TechStack";
 
 export const metadata: Metadata = {
   title: "Services - Cloud Computing",
@@ -29,6 +30,7 @@ const CloudComputing = () => {
       <Hero
         title="Cloud Consulting Services"
         subtitle="Unlock the full potential of your cloud infrastructure. At Classy Endeavors, we deliver cloud-first strategies that drive scalability, agility, and resilience across your digital ecosystem. Whether you are starting your cloud journey or optimizing your current infrastructure, our experts provide tailored solutions to meet your business goals."
+        backgroundImage="/images/services/CloudBackground.svg"
         ctaButtons={[
           {
             label: "Get In Touch With Us",
@@ -39,6 +41,7 @@ const CloudComputing = () => {
       />
       <Services />
       <WhyUs title="Why Work With Us?" description="Description for Cloud Computing" data={cloudData}/>
+      <TechStack />
       <Banner
         title="Ready to begin your cloud journey?"
         description="Let’s review your setup and explore faster, scalable cloud solutions. Book a free consult."
