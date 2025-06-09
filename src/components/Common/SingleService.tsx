@@ -22,7 +22,7 @@ const SingleService = ({
   return (
     <div
       className={cn(
-        "border-border flex flex-col gap-6 rounded-md border p-6 md:flex-row md:gap-12",
+        "border-border flex flex-col gap-6 border-b p-6 md:flex-row md:gap-12",
         className,
       )}
     >
@@ -30,7 +30,7 @@ const SingleService = ({
         <Image
           src={imageSrc}
           alt="Service Image"
-          className="w-120 rounded-lg"
+          className="w-100 rounded-lg"
           width={100}
           height={100}
         />
