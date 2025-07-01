@@ -16,11 +16,11 @@ import { useState } from "react";
 
 const Header = () => {
   const navItems = [
-    { name: "About", link: "#about" },
+    { name: "About", link: "/about" },
     {
       name: "Services",
       link: "#services",
-      children: [
+      sublinks: [
         { name: "Cloud Computing", link: "/services/cloud-computing" },
         { name: "Mobile Apps", link: "/services/mobile-development" },
         {
@@ -43,10 +43,10 @@ const Header = () => {
         },
       ],
     },
-    { name: "Industries", link: "#industries" },
-    { name: "Portfolios", link: "#portfolios" },
+    { name: "Industries", link: "/industries" },
+    { name: "Portfolios", link: "/portfolios" },
 
-    { name: "Blogs", link: "#blogs" },
+    { name: "Blogs", link: "/blogs" },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
