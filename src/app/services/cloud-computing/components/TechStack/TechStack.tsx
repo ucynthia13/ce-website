@@ -6,16 +6,16 @@ import { techStackData } from "./techStackData";
 const TechStack = () => {
   return (
     <section className="relative z-10 pt-16 md:pt-20 lg:pt-24">
-      <div className="container mx-auto max-w-6xl px-6">
+      <div className="container mx-auto max-w-7xl px-6">
         <div className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
           <h2 className="text-3xl font-bold">Technologies We Work With</h2>
-          <p className="max-w-sm text-gray-600 text-sm">
+          <p className="max-w-sm text-sm">
             Classy Endeavors harnesses leading cloud and DevOps solutions to
             deliver reliable, efficient management of your cloud infrastructure.
           </p>
         </div>
 
-        <div className="mt-16 space-y-6">
+        <div className="mt-12 space-y-6">
           {techStackData.map((group, idx) => (
             <div key={idx} className="flex flex-col gap-4 md:flex-row md:items-center">
               <div className="h-16 shrink-0 font-semibold capitalize text-white py-2 ps-4 pe-12 rounded-md flex justify-center items-center"
@@ -38,7 +38,7 @@ const TechStack = () => {
                       alt={`${group.title}-${iconIdx}`}
                       width={40}
                       height={40}
-                      className="object-contain"
+                      className="object-contain"  
                     />
                   </div>
                 ))}

@@ -2,8 +2,6 @@ import React from "react";
 
 import { Metadata } from "next";
 import { Hero } from "@/components/Common/ServicesHero";
-import { ExternalLink } from "lucide-react";
-import { teamMembers } from "@/components/Hero/heroData";
 import Banner from "@/components/Common/Banner";
 import SystemServices from "./components/SupportServices";
 import Features from "./components/Features";
@@ -33,12 +31,7 @@ const SupportAndMaintenance = () => {
         title="Software Care Solutions"
         subtitle="At Classy Endeavors, we understand that consistent system performance, secure frameworks, and reliable uptime are essential for business growth. Our software support and maintenance services are designed to optimize your systems and keep operations running seamlessly."
         backgroundImage="/images/services/SupportBackground.svg"
-        ctaButtons={[
-          {
-            label: "Get In Touch With Us",
-            icon: <ExternalLink className="h-4 w-4 stroke-2" />,
-          },
-        ]}
+        keywords={["Software Support", "System Maintenance", "Business Continuity"]}
       />
       <SystemServices />
       <Features />

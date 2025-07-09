@@ -20,25 +20,25 @@ const WhyUs = ({ title, description, data }: WhyUsProps) => {
   };
 
   return (
-    <section className="relative z-10 pt-16 md:pt-20 lg:pt-24">
+    <section className="relative z-10 pt-20">
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false }}
-        className="container mx-auto max-w-6xl rounded-lg px-8 text-black"
+        className="container mx-auto max-w-7xl rounded-lg px-6"
       >
         <div className="flex flex-col gap-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col space-y-6"
+            className="flex flex-col space-y-2"
           >
             <h3 className="mx-auto max-w-xl text-center text-3xl leading-snug font-bold capitalize">
               {title}
             </h3>
-            <p className="text-center capitalize">{description}</p>
-            <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+            <p className="text-center capitalize max-w-md mx-auto text-sm">{description}</p>
+            <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {data.map((feat, index) => (
                 <motion.div
                   key={index}
@@ -47,15 +47,13 @@ const WhyUs = ({ title, description, data }: WhyUsProps) => {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
-                  className="border-border relative mx-auto flex flex-col overflow-hidden rounded-lg border p-6"
+                  className="border-border relative mx-auto flex flex-col overflow-hidden rounded-lg border p-6 bg-gradient-to-b from-neutral-100 via-neutral-100 to-background"
                 >
                   <div className="flex items-center justify-between gap-2">
                     <div className="relative h-80 w-full">
                       <Image
                         src={feat.icon}
                         alt={feat.label}
-                        // width={100}
-                        // height={100}
                         layout="fill"
                         objectFit="cover"
                         className="h-full w-full rounded-lg"
