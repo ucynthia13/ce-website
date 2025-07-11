@@ -2,11 +2,13 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { features } from "./featureData";
+import { ServicesFeatures } from "@/types";
 
-const Features = () => {
-
-
+type ServiceFeaturesProps = {
+  title: string;
+  serviceFeatures: ServicesFeatures[]
+}
+const ServiceFeatures = ({title, serviceFeatures}: ServiceFeaturesProps) => {
   return (
     <section className="relative z-10 pt-16 md:pt-20 lg:pt-24">
       <motion.div
@@ -23,12 +25,12 @@ const Features = () => {
             className="flex flex-col space-y-6"
           >
             <div className="flex flex-col justify-center items-center">
-            <h3 className="mx-auto max-w-xl text-center text-3xl leading-snug font-bold">
-              Our AI Development Process
+            <h3 className="mx-auto max-w-xl text-center text-3xl leading-snug font-semibold capitalize">
+              {title}
             </h3>
             </div>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-6">
-              {features.map((feat, index) => (
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-6">
+              {serviceFeatures.map((feat, index) => (
                 <motion.div
                   key={index}
                   custom={index}
@@ -41,11 +43,10 @@ const Features = () => {
                     <div className="rounded-md p-3">
                       <Image src={feat.icon} alt={feat.label} width={24} height={24} className="h-9 w-9" />
                     </div>
-
                     <p className="text-4xl font-bold text-muted-foreground/20">0{index+1}</p>
                   </div>
-                  <p className="text-lg mt-4 font-bold">{feat.value}</p>
-                  <p className="relative z-20 mt-4 text-sm font-normal text-neutral-600 dark:text-neutral-400">
+                  <p className="text-lg mt-4 font-semibold">{feat.value}</p>
+                  <p className="relative z-20 mt-2 text-sm font-normal text-neutral-600 dark:text-neutral-400">
                     {feat.label}
                   </p>
                 </motion.div>
@@ -58,4 +59,4 @@ const Features = () => {
   );
 };
 
-export default Features;
+export default ServiceFeatures;
