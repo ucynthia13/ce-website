@@ -52,7 +52,7 @@ export const Hero = ({
   return (
     <section
       id="home"
-      className="relative z-10 overflow-hidden py-16 md:py-24 lg:py-32"
+      className="relative z-10 overflow-hidden pt-24 pb-16 md:pt-28 md:pb-24 lg:pt-42 lg:pb-28"
     >
       <Image
         src={backgroundImage}
@@ -68,9 +68,9 @@ export const Hero = ({
       {/* Stripes */}
       <div className="flex justify-end items-end">
         <div className="pointer-events-none absolute inset-0 z-10 flex justify-around pl-[50%]">
-          <div className="w-[12px] bg-white h-full" />
-          <div className="w-[12px] bg-white h-full" />
-          <div className="w-[12px] bg-white h-full" />
+          <div className="w-[6px] md:w-[8px] lg:w-[10px] bg-white h-full" />
+          <div className="w-[6px] md:w-[8px] lg:w-[10px] bg-white h-full" />
+          <div className="w-[6px] md:w-[8px] lg:w-[10px] bg-white h-full" />
         </div>
       </div>
 
@@ -78,10 +78,7 @@ export const Hero = ({
       <div className="relative z-10 container mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-2">
           <div className="w-full">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.4, delay: 0.2 }}
+            <div
               className="mx-auto max-w-[900px] text-white"
             >
               {keywords && keywords.length > 0 && (
@@ -92,9 +89,9 @@ export const Hero = ({
                   className="mb-6 flex gap-3 text-[13.5px] font-bold tracking-widest uppercase"
                 >
                   {keywords.map((word, idx) => (
-                    <motion.span key={idx} variants={wordFadeUp}>
+                    <span key={idx}>
                       {word}
-                    </motion.span>
+                    </span>
                   ))}
                 </motion.div>
               )}
@@ -148,7 +145,7 @@ export const Hero = ({
                 className="flex flex-wrap gap-4"
               >
               </motion.div>
-            </motion.div>
+            </div>
           </div>
           {section}
         </div>
