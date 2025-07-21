@@ -62,17 +62,7 @@ export const Hero = ({
         quality={90}
         className="absolute inset-0 z-0"
       />
-      {/* Radial gradient mask */}
       <div className="pointer-events-none absolute inset-0 flex items-end justify-end [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black" />
-
-      {/* Stripes */}
-      <div className="flex justify-end items-end">
-        <div className="pointer-events-none absolute inset-0 z-10 flex justify-around pl-[50%]">
-          <div className="w-[6px] md:w-[8px] lg:w-[10px] bg-white h-full" />
-          <div className="w-[6px] md:w-[8px] lg:w-[10px] bg-white h-full" />
-          <div className="w-[6px] md:w-[8px] lg:w-[10px] bg-white h-full" />
-        </div>
-      </div>
 
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black" />
       <div className="relative z-10 container mx-auto max-w-7xl px-6">
