@@ -2,18 +2,17 @@ import React from "react";
 import { Metadata } from "next";
 import { Hero } from "@/components/Common/ServicesHero";
 import Tools from "./components/Tools";
-import Banner from "@/components/Common/Banner";
 import DesignProcess from "./components/DesignProcess";
-import Features from "./components/Features";
 import ContactUs from "@/components/ContactUs";
 import ServiceIndustries from "@/components/Common/ServiceIndustries";
 import { industries } from "@/components/Common/ServiceIndustries/serviceIndustriesData";
-import CaseStudies from "@/components/Common/CaseStudies";
-import { caseStudies } from "@/components/Common/CaseStudies/caseStudiesData";
 import ServiceFeatures from "@/components/Common/ServiceFeatures";
 import { uiuxServices } from "@/components/Common/ServiceFeatures/serviceFeaturesData";
-import Testimonials from "@/components/Common/Testimonials";
 import FAQ from "@/components/Common/FAQ/FAQ";
+import ProductsOffered from "./components/ProductsOffered";
+import Blog from "@/components/Common/Blog";
+import { uiuxFaqs } from "@/components/Common/FAQ/faqData";
+import { uiuxTestimonials } from "@/components/ContactUs/testimonialsData";
 export const metadata: Metadata = {
   title: "Services - UI/UX Design",
   keywords: [
@@ -32,21 +31,22 @@ const UIUXPage = () => {
   return (
     <>
       <Hero
-        title="Design That Feels Right—and Performs Exceptionally"
-        subtitle="We help startups and enterprises craft stunning interfaces and frictionless experiences that delight users and drive growth."
+        title="Transform Ideas into Exceptional Digital Experiences"
+        subtitle="At Classy Endeavors, we craft user experiences that delight, engage,
+and convert. Our UI/UX design services blend creativity, functionality, and
+business goals—turning your vision into intuitive digital products that leave a
+lasting impression."
         backgroundImage="/images/services/UIUXBackground.svg"
         keywords={["Intuitive Design.", "User-Centric.", "Engaging Experiences"]}
       />
-      <ServiceFeatures title="Our UI/UX Design Services" features={uiuxServices} />
-      <Features />
+      <ServiceFeatures title="Turning Your Ideas into Seamless Designs" features={uiuxServices} />
+      <ProductsOffered />
       <Tools />
-      <CaseStudies title="Case studies of our UI/UX design services" caseStudies={caseStudies} />
       <DesignProcess />
       <ServiceIndustries title="Industries we serve" industries={industries} />
-      <Testimonials />
-      <FAQ />
-      <Banner title="Let's Design Something That Works" description="Kickstart Your Next Project With a Free Custom Design — Share Your Idea and Let Our Expert Team Bring It to Life, Absolutely Free!" buttonText="Contact Us" />
-      <ContactUs />
+      <Blog blogLink="https://blog.classyendeavors.com/feed?topic=design" />
+      <FAQ faqs={uiuxFaqs} />
+      <ContactUs testimonials={uiuxTestimonials} />
     </>
   );
 };
