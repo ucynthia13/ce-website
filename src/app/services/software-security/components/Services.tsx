@@ -62,7 +62,7 @@ const Services = () => {
                 (
                   <div className="bg-white p-6 lg:p-7 rounded-lg flex flex-col gap-4" key={title}>
                       <Icon className="size-6 text-primary" />
-                      <h1 className="font-semibold">{title}</h1>
+                      <h2 className="font-semibold">{title}</h2>
                       <p>{description}</p>
                   </div>
                 )

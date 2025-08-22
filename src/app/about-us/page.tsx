@@ -10,17 +10,17 @@ import { Quote } from 'lucide-react';
 import Hero from './components/Hero';
 
 export const metadata: Metadata = {
-  title: "About Us - EP365 Procurement System",
+  title: "Classy Endeavours",
   keywords: [
-    "About EP365",
-    "EP365 Procurement",
-    "About Our Team",
-    "Procurement Solutions",
-    "Our Mission",
-    "Supply Chain Management",
+    "Classy Endeavours",
+    "IT Company",
+    "SaaS Innovation",
+    "Software Solutions",
+    "Digital Transformation",
+    "Business Operations",
   ],
   description:
-    "Discover EP365, an innovative procurement system designed to streamline supply chain processes. Learn about our mission, our team, and how we empower businesses with efficient procurement solutions.",
+    "Classy Endeavours is an IT company leading in SaaS innovation. We create cutting-edge, scalable software solutions that transform business operations, fueling success in the digital era.",
 };
 
 const AboutUsPage = () => {

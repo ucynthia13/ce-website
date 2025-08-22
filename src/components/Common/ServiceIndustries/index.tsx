@@ -35,7 +35,7 @@ const ServiceIndustries = ({ title, industries }: ServiceIndustryProps) => {
         .map((industry) => (
           <div key={industry.name} className="flex flex-col md:flex-row gap-6 md:gap-12 text-foreground/80">
             <div className="flex flex-col gap-4 text-left">
-              <h1 className="font-semibold text-lg">{industry.name}</h1>
+              <h2 className="font-semibold text-lg">{industry.name}</h2>
               <p>{industry.quote}</p>
               <ul className="list-disc list-inside custom-bullets flex flex-col gap-4">
                 {industry.services.map((service, index) => (

@@ -15,9 +15,9 @@ const Banner = ({ title, description }: BannerProps) => {
       viewport={{ once: false }}
       className="relative z-10 container rounded-lg p-8 border border-primary/50 shadow-xs shadow-primary/50 overflow-hidden flex flex-col space-y-4 justify-between md:h-[400px] lg:h-[450px]"
     >
-      <h1 className="mx-auto max-w-2xl text-3xl leading-snug font-medium capitalize">
+      <h2 className="mx-auto max-w-2xl text-3xl leading-snug font-medium capitalize">
         {title}
-      </h1>
+      </h2>
       <p className="text-muted-foreground max-w-xl mx-auto mb-4 text-sm">
         {description}
       </p>

@@ -15,7 +15,7 @@ const Navbar = ({ className }: { className?: string }) => {
   return (
     <div
       className={cn(
-        "fixed top-3 inset-x-0 max-w-3xl md:mx-auto mx-2 z-50 rounded-full border border-black/[0.1] dark:border-white/[0.2] flex items-center justify-between px-4 dark:bg-black bg-white",
+        "fixed top-3 inset-x-0 max-w-3xl md:mx-auto mx-3 z-50 rounded-full border border-black/[0.1] dark:border-white/[0.2] flex items-center justify-between px-4 dark:bg-black bg-white",
         className
       )}
     >
@@ -82,9 +82,11 @@ const Navbar = ({ className }: { className?: string }) => {
           </MenuItem>
           <HoveredLink href="https://blog.classyendeavors.com/">Blogs</HoveredLink>
         </Menu>
-        <CustomButton title="Contact Us" link="mailto:info@classyendeavors.com" />
       </div>
+      <div className="hidden md:flex justify-center">
+        <CustomButton title="Contact Us" link="mailto:info@classyendeavors.com" />
 
+      </div>
       <button
         className="md:hidden relative z-20 p-2 rounded-lg focus:outline-none"
         onClick={() => setMobileOpen(!mobileOpen)}

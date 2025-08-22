@@ -12,9 +12,9 @@ const SupportServices = () => {
   return (
     <section className="relative z-10 pt-20">
       <div className="container mx-auto max-w-6xl rounded-lg px-6">
-        <h1 className="mx-auto max-w-2xl text-center text-3xl leading-snug font-semibold mb-4">
+        <h2 className="mx-auto max-w-2xl text-center text-3xl leading-snug font-semibold mb-4">
           Support Services
-        </h1>
+        </h2>
         <p className="text-sm mb-6 max-w-3xl mx-auto text-center">Our dedicated team handles all aspects of software and infrastructure support services to ensure consistent business continuity and IT performance.</p>
         <div className="flex flex-col gap-4">
           {[
@@ -57,7 +57,7 @@ const SupportServices = () => {
                     <Icon className="text-red-500 size-6" />
                   </div>
                   <div className="flex flex-col gap-1">
-                    <h1 className="font-semibold text-md">{title}</h1>
+                    <h2 className="font-semibold text-md">{title}</h2>
                     <p className="text-sm">{description}</p>
                   </div>
                 </div>

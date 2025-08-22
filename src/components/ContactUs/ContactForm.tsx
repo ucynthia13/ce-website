@@ -154,7 +154,7 @@ const ContactForm = () => {
 
   return (
     <div className="">
-      <h1 className="text-lg font-medium mb-2">{t("howCanWeHelp")}</h1>
+      <h2 className="text-lg font-medium mb-2">{t("howCanWeHelp")}</h2>
       <p className="text-sm mb-6">{t("messageAwayText")}</p>
 
       <Form {...form}>

@@ -52,14 +52,14 @@ export const Hero = ({
             <div
               className="mx-auto max-w-[900px] text-white"
             >
-              <motion.h1
+              <motion.h2
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
                 className={cn("mb-6 max-w-2xl text-3xl leading-tight font-semibold md:text-4xl", titleStyles)}
               >
                 {title}
-              </motion.h1>
+              </motion.h2>
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}

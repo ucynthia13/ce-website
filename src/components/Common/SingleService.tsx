@@ -33,7 +33,7 @@ const SingleService = ({
       </div>
 
       <div className="flex flex-col items-start justify-center gap-2 w-1/2">
-        <h1 className="text-xl font-semibold">{title}</h1>
+        <h2 className="text-xl font-semibold">{title}</h2>
         <p className="text-sm max-w-2xl">{description}</p>
         <div className="mt-4 flex flex-col gap-2">
           {services.map((service, index) => (

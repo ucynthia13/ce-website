@@ -26,7 +26,7 @@ export const MenuItem = ({
     <div onMouseEnter={() => setActive(item)} className="relative ">
       <motion.p
         transition={{ duration: 0.3 }}
-        className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
+        className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white hover:text-primary transition duration-200"
       >
         {item}
       </motion.p>
@@ -87,7 +87,7 @@ export const ProductItem = ({
   return (
     <a href={href} className="flex space-x-2">
       <div>
-        <h4 className="font-medium mb-1 text-black dark:text-white">
+        <h4 className="font-medium mb-1 text-black dark:text-white hover:text-primary transition duration-200">
           {title}
         </h4>
         <p className="text-neutral-700 max-w-[16rem] dark:text-neutral-300">
@@ -102,7 +102,7 @@ export const HoveredLink = ({ children, ...rest }: any) => {
   return (
     <a
       {...rest}
-      className="text-neutral-700 dark:text-neutral-200 hover:text-black "
+      className="text-neutral-700 dark:text-neutral-200 text-sm hover:text-primary transition duration-200"
     >
       {children}
     </a>

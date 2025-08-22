@@ -63,7 +63,7 @@ const HowWeWork = () => {
               >
                 <CardContent className="flex flex-col gap-2 text-white">
                   {icon}
-                  <h1 className="mb-1 text-lg font-medium">{title}</h1>
+                  <h2 className="mb-1 text-lg font-medium">{title}</h2>
                   <p>
                     {desc}
                   </p>

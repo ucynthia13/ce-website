@@ -24,7 +24,7 @@ const Sitemap = () => {
     <section className="relative overflow-hidden z-10 pt-40 pb-20">
 
       <div className="container mx-auto max-w-3xl px-6">
-        <h1 className="text-4xl font-medium mb-4">Site Map</h1>
+        <h2 className="text-4xl font-medium mb-4">Site Map</h2>
         {Object.entries(sitemapData).map(([category, links]) => (
           <div key={category}>
             <h2 className="text-xl font-medium mt-6 mb-2">{category}</h2>

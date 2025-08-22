@@ -109,9 +109,9 @@ const CaseStudiesCard = ({caseStudies}: {caseStudies: CaseStudy[]}) => {
           </div>
           <div className="p-4">
             <div className="max-w-md">
-              <h1 className="font-medium text-muted-foreground break-words break-all whitespace-normal">
+              <h2 className="font-medium text-muted-foreground break-words break-all whitespace-normal">
                 {casestudy.title}
-              </h1>
+              </h2>
             </div>
 
             <div className="flex flex-wrap gap-2 max-w-md">

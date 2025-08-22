@@ -81,7 +81,7 @@ export const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    href="https://www.linkedin.com/in/classy-endeavors"
+                    href="https://www.linkedin.com/company/classy-endeavors/"
                     className=""
                   >
                     {t("linkedin")}

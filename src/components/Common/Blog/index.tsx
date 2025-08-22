@@ -9,7 +9,7 @@ import { getMediumPosts } from "@/lib/medium";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-const Blog = ({blogLink}: {blogLink: string}) => {
+const Blog = ({blogLink = "https://blog.classyendeavors.com/feed"}: {blogLink: string}) => {
   const [posts, setPosts] = useState<any[]>([]);
 
   useEffect(() => {
