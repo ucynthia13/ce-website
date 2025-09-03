@@ -45,14 +45,14 @@ const CustomDropdown = ({ children, trigger, className = "" }) => {
       <div onClick={() => setIsOpen(!isOpen)}>
         {trigger}
       </div>
-      
+
       {isOpen && (
         <>
-          <div 
-            className="fixed inset-0 z-40" 
+          <div
+            className="fixed inset-0 z-40"
             onClick={() => setIsOpen(false)}
           />
-          
+
           <div className={`absolute left-0 top-full mt-2 bg-background dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg z-50 ${className}`}>
             {children({ closeDropdown: () => setIsOpen(false) })}
           </div>
@@ -75,7 +75,7 @@ const ContactForm = () => {
     file: z
       .instanceof(File)
       .optional()
-      .or(z.undefined()), 
+      .or(z.undefined()),
   });
 
   const form = useForm<z.infer<typeof contactSchema>>({
@@ -84,7 +84,7 @@ const ContactForm = () => {
       name: "",
       company: "",
       email: "",
-      phone: "", 
+      phone: "",
       budget: "",
       message: "",
       file: undefined,
@@ -105,37 +105,21 @@ const ContactForm = () => {
 
   const onSubmit = async (data: z.infer<typeof contactSchema>) => {
     try {
-      let fileData = null;
-      
+      const webhookURL = process.env.NEXT_PUBLIC_WEBHOOK_URL;
+
+      const formData = new FormData();
+      formData.append(
+        "content",
+        `**New Customer Form Submission**\nName: ${data.name}\nCompany: ${data.company}\nEmail: ${data.email}\nPhone: ${data.phone}\nBudget: ${data.budget || "Not specified"}\nMessage: ${data.message}`
+      );
+
       if (data.file instanceof File) {
-        const reader = new FileReader();
-        fileData = await new Promise((resolve) => {
-          reader.onload = () => resolve({
-            name: data.file!.name,
-            type: data.file!.type,
-            size: data.file!.size,
-            data: reader.result
-          });
-          reader.readAsDataURL(data.file);
-        });
+        formData.append("file", data.file);
       }
 
-      const submitData = {
-        name: data.name,
-        company: data.company,
-        email: data.email,
-        phone: data.phone,
-        message: data.message,
-        budget: data.budget,
-        // file: fileData?.data || null
-      };
-
-      const res = await fetch("/api/hubspot-submit", {
+      const res = await fetch(webhookURL, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(submitData),
+        body: formData,
       });
 
       if (res.ok) {
@@ -143,7 +127,7 @@ const ContactForm = () => {
         form.reset();
       } else {
         const errorText = await res.text();
-        console.error("Submission error:", errorText);
+        console.error("Discord submission error:", errorText);
         toast.error(t("somethingWentWrong"));
       }
     } catch (error) {
@@ -152,8 +136,9 @@ const ContactForm = () => {
     }
   };
 
+
   return (
-    <div className="">
+    <div>
       <h2 className="text-lg font-medium mb-2">{t("howCanWeHelp")}</h2>
       <p className="text-sm mb-6">{t("messageAwayText")}</p>
 
@@ -202,11 +187,11 @@ const ContactForm = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input 
-                      type="tel" 
-                      placeholder={t("phonePlaceholder")} 
-                      {...field} 
-                      className="shadow-none border-b border-b-muted-foreground rounded-none" 
+                    <Input
+                      type="tel"
+                      placeholder={t("phonePlaceholder")}
+                      {...field}
+                      className="shadow-none border-b border-b-muted-foreground rounded-none"
                     />
                   </FormControl>
                 </FormItem>
@@ -241,11 +226,10 @@ const ContactForm = () => {
                               field.onChange(option.value);
                               closeDropdown();
                             }}
-                            className={`w-full px-4 py-2 text-left text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${
-                              field.value === option.value
-                                ? 'bg-primary/10 text-primary font-medium'
-                                : 'text-gray-700 dark:text-gray-300'
-                            }`}
+                            className={`w-full px-4 py-2 text-left text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${field.value === option.value
+                              ? 'bg-primary/10 text-primary font-medium'
+                              : 'text-gray-700 dark:text-gray-300'
+                              }`}
                           >
                             {option.label}
                             {field.value === option.value && (
@@ -279,20 +263,20 @@ const ContactForm = () => {
             render={({ field: { onChange, value, ...rest } }) => (
               <FormItem>
                 <FormControl>
-                  <Input 
-                    type="file" 
+                  <Input
+                    type="file"
                     onChange={(e) => {
                       const file = e.target.files?.[0];
                       onChange(file);
-                    }} 
-                    {...rest} 
-                    className="shadow-none border-b border-b-muted-foreground rounded-none" 
+                    }}
+                    {...rest}
+                    className="shadow-none border-b border-b-muted-foreground rounded-none"
                   />
                 </FormControl>
               </FormItem>
             )}
           />
-          
+
           <div className="flex flex-col md:flex-row justify-between gap-4">
             <p className="text-xs text-muted-foreground">
               {t("privacyConsentText")}

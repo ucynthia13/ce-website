@@ -27,7 +27,7 @@ export default function Home() {
       <Industries />
       <Statistics />
       <Blog blogLink="https://blog.classyendeavors.com/feed" />
-     <ContactUs />
+      <ContactUs />
     </>
   );
 }
