@@ -28,6 +28,7 @@ export default function RootLayout({
           <Footer />
           <ScrollToTop />
         </Providers>
+        <script src=" https://hoox.s3.us-east-1.amazonaws.com/6286884918483e7d-www.classyendeavors.com-hoox.js" async></script>
       </body>
     </html>
   );
